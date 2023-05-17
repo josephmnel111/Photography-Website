@@ -1,17 +1,43 @@
-<script setup>
+<script>
+    export default {
+        data() {
+            return {
+                photos:[
+                './imgs/download.jpg', './imgs/download.jpg', './imgs/download.jpg', 
+                './imgs/download.jpg', './imgs/download.jpg', './imgs/download.jpg',
+                './imgs/download.jpg', './imgs/download.jpg', './imgs/download.jpg',
+                './imgs/download.jpg', './imgs/download.jpg', './imgs/download.jpg', 
+                './imgs/download.jpg', './imgs/download.jpg', './imgs/download.jpg',
+                './imgs/download.jpg', './imgs/download.jpg', './imgs/download.jpg',
+                './imgs/download.jpg', './imgs/download.jpg', './imgs/download.jpg', 
+                './imgs/download.jpg', './imgs/download.jpg', './imgs/download.jpg',
+                './imgs/download.jpg', './imgs/download.jpg', './imgs/download.jpg',
+                ]
+            }
+        }
+    }
 </script>
 <template>
-  <div class="photos">
-    <h1>This is a photos page</h1>
+  <div class="photos-section">
+    <div class = "grid">
+        <img v-for = "photo in photos" src = "./imgs/download.jpg"/>
+    </div>
   </div>
 </template>
 
 <style>
-@media (min-width: 1024px) {
-  .photos {
-    min-height: 100vh;
+grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+}
+.photos-section {
     display: flex;
-    align-items: center;
-  }
+    margin: auto;
+    height: 100%;
+    width: 100vw;
+    margin-top: 50px;
+}
+.picture {
+
 }
 </style>
