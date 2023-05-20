@@ -25,8 +25,9 @@
 <template>
   <div class="photos-section">
     <div class = "grid">
-        <div @click="goToPhoto(123)">
-            <img v-for = "photo in photoStore.photos" src = "./imgs/download.jpg"/>
+        <div v-for = "photo in photoStore.photos">
+            <img @click="goToPhoto(photo.id)" src = "./imgs/download.jpg"/>
+            {{ photo.id }}
             <RouterView></RouterView>
         </div>
     </div>

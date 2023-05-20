@@ -4,8 +4,6 @@
     <div class="individual-photo-section">
         hey
         <div class = "content">
-            id: {{ $route.params.id }}
-            username: {{ $history.state }}
         </div>
     </div>
   </template>
