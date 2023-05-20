@@ -22,11 +22,16 @@ const router = createRouter({
     name: 'photos',
     component: () => import('../views/Photos/PhotosView.vue')
   },
-  
   {
     path: '/contact-me',
     name: 'contact-me',
     component: () => import('../views/ContactMe/ContactMeView.vue')
+  },
+  {
+    path: '/individual-photo-view/:id',
+    name: 'individual-photo-view',
+    props: true,
+    component: () => import('../views/Photos/IndividualPhotoView.vue')
   }
   ]
 })

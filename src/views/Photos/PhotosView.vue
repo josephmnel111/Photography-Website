@@ -1,26 +1,34 @@
 <script>
-    export default {
-        data() {
-            return {
-                photos:[
-                './imgs/download.jpg', './imgs/download.jpg', './imgs/download.jpg', 
-                './imgs/download.jpg', './imgs/download.jpg', './imgs/download.jpg',
-                './imgs/download.jpg', './imgs/download.jpg', './imgs/download.jpg',
-                './imgs/download.jpg', './imgs/download.jpg', './imgs/download.jpg', 
-                './imgs/download.jpg', './imgs/download.jpg', './imgs/download.jpg',
-                './imgs/download.jpg', './imgs/download.jpg', './imgs/download.jpg',
-                './imgs/download.jpg', './imgs/download.jpg', './imgs/download.jpg', 
-                './imgs/download.jpg', './imgs/download.jpg', './imgs/download.jpg',
-                './imgs/download.jpg', './imgs/download.jpg', './imgs/download.jpg',
-                ]
+    import {defineComponent} from 'vue'
+    import {usePhotoStore} from '../../assets/store/photoStore'
+    export default defineComponent({
+
+        setup() {
+            const photoStore = usePhotoStore()
+
+            return {photoStore}
+        },
+
+        methods: {
+            goToPhoto(id) {
+                this.$router.push({
+                    name: 'individual-photo-view',
+                    params: {
+                        id: id,
+                    }
+                })
             }
         }
-    }
+    })
+
 </script>
 <template>
   <div class="photos-section">
     <div class = "grid">
-        <img v-for = "photo in photos" src = "./imgs/download.jpg"/>
+        <div @click="goToPhoto(123)">
+            <img v-for = "photo in photoStore.photos" src = "./imgs/download.jpg"/>
+            <RouterView></RouterView>
+        </div>
     </div>
   </div>
 </template>
