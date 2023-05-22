@@ -5,7 +5,6 @@
 
         setup() {
             const photoStore = usePhotoStore()
-
             return {photoStore}
         },
 
@@ -25,11 +24,10 @@
 <template>
   <div class="photos-section">
     <div class = "grid">
-        <div v-for = "photo in photoStore.photos">
-            <img @click="goToPhoto(photo.id)" src = "./imgs/download.jpg"/>
-            {{ photo.id }}
-            <RouterView></RouterView>
+        <div>
+            <img v-for = "photo in photoStore.photos" @click="goToPhoto(photo.id)" :src = "photo.image"/>
         </div>
+        <RouterView></RouterView>
     </div>
   </div>
 </template>

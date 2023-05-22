@@ -1,9 +1,23 @@
-<script>
+<script> 
+import {defineComponent} from 'vue'
+import {usePhotoStore} from '../../assets/store/photoStore'
+import {useRoute} from 'vue-router'
+export default defineComponent({
+
+    setup() {
+        const route = useRoute()
+
+        const photoStore = usePhotoStore()
+
+        return {photoStore}
+    }
+})
+
 </script>
 <template>
     <div class="individual-photo-section">
-        hey
         <div class = "content">
+            {{ this.$route.params.id }}
         </div>
     </div>
   </template>
