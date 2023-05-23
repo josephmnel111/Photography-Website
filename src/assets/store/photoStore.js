@@ -1,11 +1,12 @@
 import {RouterView} from 'vue-router'
 import {defineStore} from 'pinia'
 import picture from './imgs/download.jpg'
+import picture2 from './imgs/download2.jpg'
 
     export const usePhotoStore = defineStore({
         id: "photoStore",
         state: () => ({
-            photos:[{id: 1, image: picture}, {id: 2, image: picture}, {id: 3, image: picture}, {id: 4, image: picture}, {id: 5, image: picture}, {id: 6, image: picture}, {id: 7, image: picture}
+            photos:[{id: 1, image: picture}, {id: 2, image: picture2}, {id: 3, image: picture}, {id: 4, image: picture}, {id: 5, image: picture}, {id: 6, image: picture}, {id: 7, image: picture}
                 , {id: 8, image: picture}, {id: 9, image: picture}, {id: 10, image: picture}, {id: 11, image: picture}, {id: 12, image: picture}, {id: 13, image: picture}, {id: 14, image: picture}
                 , {id: 15, image: picture}, {id: 16, image: picture}, {id: 17, image: picture}, {id: 18, image: picture}, {id: 19, image: picture}, {id: 20, image: picture}, {id: 21, image: picture}
                 , {id: 22, image: picture}, {id: 23, image: picture}, {id: 24, image: picture}, {id: 25, image: picture}, {id: 26, image: picture}, {id: 27, image: picture}, {id: 28, image: picture}

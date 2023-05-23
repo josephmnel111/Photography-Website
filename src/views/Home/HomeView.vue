@@ -7,7 +7,7 @@
 </template>
 <style>
   .home {
-    font-family: 'allura';
-    src:url('../../assets/fonts/Allura-Regular.ttf')
+    font-family: 'Allura';
+    font-size: 24;
   }
 </style>

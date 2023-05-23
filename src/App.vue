@@ -16,4 +16,8 @@ import Header from './components/Header.vue'
 html, body {
   margin: 0
 }
+@font-face {
+  font-family: 'Allura';
+  src:url('./assets/fonts/Allura-Regular.ttf')
+}
 </style>
