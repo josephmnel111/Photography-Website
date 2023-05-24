@@ -1,7 +1,7 @@
 <script> 
 import {defineComponent} from 'vue'
 import {usePhotoStore} from '../../assets/store/photoStore'
-import {useRoute} from 'vue-router'
+import {useRoute, RouterView} from 'vue-router'
 export default defineComponent({
 
     setup() {
@@ -16,19 +16,31 @@ export default defineComponent({
         }
     },
     methods: {
-        clickLeftArrow() {
-            if (this.activePhotoId == 0) {
-                this.activePhotoId = this.photoStore.photos.length - 1
+        clickLeftArrow(id) {
+            if (id == 1) {
+                id = this.photoStore.photos.length
             } else {
-                this.activePhotoId = this.activePhotoId - 1
+               id = Number(id) - 1
             }
+            this.$router.push({
+                name: 'individual-photo-view',
+                params: {
+                    id: id
+                }
+            })
         },
-        clickRightArrow() {
-            if (this.activePhotoId == this.photoStore.photos.length - 1) {
-                this.activePhotoId = 0
+        clickRightArrow(id) {
+            if (id == this.photoStore.photos.length) {
+                id = 1
             } else {
-                this.activePhotoId = this.activePhotoId + 1
+               id = Number(id) + 1
             }
+            this.$router.push({
+                name: 'individual-photo-view',
+                params: {
+                    id: id
+                }
+            })
         }
     }
 })
@@ -36,14 +48,14 @@ export default defineComponent({
 </script>
 <template>
     <div class="individual-photo-section">
-        <div class = "left-arrow" @click="clickLeftArrow()">
-            {{ '<' }}
-        </div>
         <div class = "content">
-            <img :src = "photoStore.photos[activePhotoId].image"/>
-        </div>
-        <div class = "right-arrow" @click="clickRightArrow()">
-            {{ '>' }}
+            <div class = "left-arrow" @click="clickLeftArrow(this.$route.params.id)">
+                {{ '<' }}
+            </div>
+            <img class = "individual-picture" :src = "photoStore.photos[this.$route.params.id - 1].image"/>
+            <div class = "right-arrow" @click="clickRightArrow(this.$route.params.id)">
+                {{ '>' }}
+            </div>
         </div>
     </div>
   </template>
@@ -52,6 +64,24 @@ export default defineComponent({
     display: flex;
     flex-direction: row;
 }
+.individual-picture {
+    height: 60vh;
+}
+.left-arrow {
+    position: absolute;
+    left: 0;
+    margin-left: 20px;
+}
+.right-arrow {
+    position: absolute;
+    right: 0;
+    margin-right: 20px;
+}
 .content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    width: 100vw;
 }
 </style>

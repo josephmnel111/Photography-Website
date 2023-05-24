@@ -25,7 +25,7 @@
   <div class="photos-section">
     <div class = "grid">
         <div>
-            <img v-for = "photo in photoStore.photos" @click="goToPhoto(photo.id)" :src = "photo.image"/>
+            <img class = "picture" v-for = "photo in photoStore.photos" @click="goToPhoto(photo.id)" :src = "photo.image"/>
         </div>
         <RouterView></RouterView>
     </div>
@@ -45,6 +45,7 @@ grid {
     margin-top: 50px;
 }
 .picture {
-
+    height: 40vh;
+    margin: 5px;
 }
 </style>
