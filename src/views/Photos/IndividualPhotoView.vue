@@ -1,7 +1,7 @@
 <script> 
 import {defineComponent} from 'vue'
 import {usePhotoStore} from '../../assets/store/photoStore'
-import {useRoute, RouterView} from 'vue-router'
+import {useRoute} from 'vue-router'
 export default defineComponent({
 
     setup() {
