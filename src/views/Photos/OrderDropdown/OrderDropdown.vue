@@ -1,7 +1,7 @@
 <template>
   <div @click="toggle">
     <slot name="toggler">
-      <button class = "order-by-button">Toggle</button>
+      <button class = "order-by-button">Order By</button>
     </slot>
     <slot/>
   </div>

@@ -1,5 +1,5 @@
 <template>
-    <div @click = "OrderByValue()" class = "order-item">
+    <div @click = "FilterByValue()" class = "order-item">
       <div>
         <slot/>
       </div>
@@ -8,9 +8,9 @@
   
   <script>
     export default {
-        name: "OrderDropdownItem",
+        name: "FilterDropdownItem",
         methods: {
-          OrderByValue() {
+          FilterByValue() {
             console.log('hi')
           }
         }
@@ -18,7 +18,6 @@
   </script>
 <style>
 .order-item {
-    
 }
 </style>
   

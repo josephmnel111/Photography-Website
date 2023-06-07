@@ -2,7 +2,7 @@
   <transition name = "dropdown-content"></transition>
   <div 
     v-if="active"
-    class="dropdown-items"
+    class="order-dropdown-items"
     >
     <slot/>
   </div>
@@ -29,12 +29,15 @@
     opacity: 0;
     transform: translateY(-5px);
   }
-  .dropdown-items {
+  .order-dropdown-items {
+    z-index: 5;
+    position: absolute;
     align-items: center;
     display: flex;
     flex-direction: column;
     color: black;
+    background-color: white;
     width: 90px;
-    margin-left: 3px;
+
   }
 </style>
