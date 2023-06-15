@@ -24,23 +24,40 @@
                 })
             },
             orderPhotos(option) {
-                console.log(option)
                 if (option == "Date") {
                     this.photoStore.orderByDate()
                 } else {
                     this.photoStore.orderByPlace()
                 }
-                console.log(this.photoStore.photos)
             },
-            filterPhotos(option) {
-                console.log(option)
+            filterPhotos(id) {
+                if (this.photoTags[id].active == true) {
+                    this.photoTags[id].active = false
+                    //Remove this.photoTags[id].name to your hashmap here
+                    this.activeTags[this.photoTags[id]] = id
+                    console.log(this.activeTags)
+                    this.PhotoStore.RemovePictureByTag(this.activeTags)
+                } else {
+                    this.photoTags[id].active = true
+                    //Remove this.photoTags[id].name to your hashmap here
+                    console.log(this.activeTags)
+                    this.photoStore.AddPictureByTag(this.activeTags)
+                }
             }
         },
         data: function() {
             return {
-                photoTags: ["forest", "waterfall", "nature", "city", "outlook", "hey", "there",
-                "is", "a", "person", "to", "look", "out", "for", "what", "do", "you", "know"
-            ]
+                photoTags: [{id: 0, name: "forest", active: false}, {id: 1, name: "waterfall", active: false}, 
+                {id: 2, name: "nature", active: false}, {id: 3, name: "city", active: false},
+                {id: 4, name: "outlook", active: false}, {id: 5, name: "hey", active: false},
+                {id: 6, name: "there", active: false}, {id: 7, name: "is", active: false},
+                {id: 8, name: "a", active: false}, {id: 9, name: "person", active: false},
+                {id: 10, name: "to", active: false}, {id: 11, name: "look", active: false},
+                {id: 12, name: "out", active: false}, {id: 13, name: "for", active: false},
+                {id: 14, name: "what", active: false}, {id: 15, name: "do", active: false},
+                {id: 16, name: "you", active: false}, {id: 17, name: "know", active: false},
+                ],
+                activeTags:{}
             }
         },
         components: {
@@ -57,7 +74,7 @@
 <template>
   <div class="photos-section">
     <div class = "photos-management">
-        <div class = "order-by-container">
+        <div class = "buttons-container"><div class = "order-by-container">
             <OrderDropdown>
                 <template slot="toggler">
                 <button
@@ -99,16 +116,17 @@
                 </template>
                 <FilterDropdownContent>
                     <div class = "filter-by-items">                    
-                        <FilterDropdownItem  v-for = "tag in photoTags"  @click = "filterPhotos(tag)">{{ tag }}</FilterDropdownItem>
+                        <FilterDropdownItem  v-for = "tag in photoTags" :style = "{'background-color': tag.active ? 'black': 'white'}" @click = "filterPhotos(tag.id)">{{ tag.name }}</FilterDropdownItem>
                     </div>
                 </FilterDropdownContent>
             </FilterDropdown>
         </div>
-        
+
+        </div>
     </div>
     <div class = "grid">
         <div>
-            <img class = "picture" v-for = "photo in photoStore.photos" @click="goToPhoto(photo.id)" :src = "photo.image"/>
+            <img class = "picture" v-for = "photo in photoStore.photos" :style = "{'display': photo.display ? 'inline-block': 'none' }" @click="goToPhoto(photo.id)" :src = "photo.image"/>
         </div>
         <RouterView></RouterView>
     </div>
@@ -125,18 +143,6 @@ grid {
     flex-direction: row;
     width: 100vw;
 }
-.order-by {
-    margin-right: 5%;
-    margin-left: 2%;
-    border: 2px solid rgba(0, 0, 0, .4);
-    border-radius: 15%;
-    padding: 2px;
-}
-.filter-by {
-    border: 2px solid rgba(0, 0, 0, .4);
-    border-radius: 15%;
-    padding: 2px;
-}
 .photos-section {
     margin: auto;
     margin-top: 50px;
@@ -145,20 +151,22 @@ grid {
     height: 40vh;
     margin: 5px;
 }
-.order-by-container {
-    border: 2px solid rgba(0, 0, 0, .4);
-    margin-left: 2px;
-}
-.filter-by-container {
-    border: 2px solid rgba(0, 0, 0, .4);
-    margin-left: 2px;
-}
 .filter-by-items {
       display: grid;
       grid-template-columns: 1fr 1fr 1fr 1fr;
-      grid-template-rows: 50px 50px 50px 50px;
+      grid-template-rows: 50px 50px 50px 50px 50px;
       grid-auto-flow: row;
       place-items: center;
 
+}
+.active-tag {
+    background-color: black;
+}
+.inactive-tag {
+    background-color: white;
+}
+button {
+    font-family: 'Gotham';
+    font-weight: 500;
 }
 </style>

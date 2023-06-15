@@ -18,7 +18,11 @@ html, body {
   padding: 0
 }
 @font-face {
-  font-family: 'Allura';
-  src:url('./assets/fonts/Allura-Regular.ttf')
+  font-family: 'GreatVibes';
+  src:url('./assets/fonts/GreatVibes-Regular.ttf')
+}
+@font-face {
+  font-family: 'Gotham';
+  src:url('./assets/fonts/gotham-ssm-book.otf')
 }
 </style>

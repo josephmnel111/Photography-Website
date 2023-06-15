@@ -32,12 +32,12 @@
   <style>
   
   .filter-by-button {
-      margin-left: 3px;
-      font-size: 16px;
-      padding: 2px;
-      height: 30px;
-      width: 90px;
-      border: none;
-      background-color: white;
+    border: 2px solid rgba(0, 0, 0, .4);
+    margin-left: 2px;
+    font-size: 16px;
+    padding: 2px;
+    height: 30px;
+    width: 90px;
+    background-color: white;
   }
   </style>

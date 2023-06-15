@@ -30,12 +30,14 @@
       transform: translateY(-5px);
     }
     .filter-dropdown-items {
+      margin-left: 2px;
       position: absolute;
       z-index: 5;
       align-items: center;
       color: black;
       background-color: white;
-      border: 1px solid rgba(0, 0, 0, .4);
+      font-family: 'Gotham';
+      border: 2px solid rgba(0, 0, 0, .4);
       border-top-right-radius: 8px;
       border-bottom-left-radius: 8px;
       border-bottom-right-radius: 8px;

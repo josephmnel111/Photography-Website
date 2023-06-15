@@ -30,13 +30,16 @@
     transform: translateY(-5px);
   }
   .order-dropdown-items {
+    margin-left: 2px;
     z-index: 5;
     position: absolute;
     align-items: center;
     display: flex;
     flex-direction: column;
     color: black;
+    font-family: 'Gotham';
     background-color: white;
+    border: 2px solid rgba(0, 0, 0, .4);
     width: 90px;
 
   }
