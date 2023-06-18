@@ -11,7 +11,7 @@
         name: "FilterDropdownItem",
         methods: {
           FilterByValue() {
-            console.log('hi')
+            
           }
         }
     };

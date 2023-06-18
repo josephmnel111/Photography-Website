@@ -30,17 +30,14 @@
                     this.photoStore.orderByPlace()
                 }
             },
-            filterPhotos(id) {
-                if (this.photoTags[id].active == true) {
-                    this.photoTags[id].active = false
-                    //Remove this.photoTags[id].name to your hashmap here
-                    this.activeTags[this.photoTags[id]] = id
-                    console.log(this.activeTags)
-                    this.PhotoStore.RemovePictureByTag(this.activeTags)
+            filterPhotos(index) {
+                if (this.photoTags[index].active == true) {
+                    this.photoTags[index].active = false
+                    this.activeTags.delete(this.photoTags[index].name)
+                    this.photoStore.AddPictureByTag(this.activeTags)
                 } else {
-                    this.photoTags[id].active = true
-                    //Remove this.photoTags[id].name to your hashmap here
-                    console.log(this.activeTags)
+                    this.photoTags[index].active = true
+                    this.activeTags.set(this.photoTags[index].name, index)
                     this.photoStore.AddPictureByTag(this.activeTags)
                 }
             }
@@ -57,7 +54,7 @@
                 {id: 14, name: "what", active: false}, {id: 15, name: "do", active: false},
                 {id: 16, name: "you", active: false}, {id: 17, name: "know", active: false},
                 ],
-                activeTags:{}
+                activeTags : new Map()
             }
         },
         components: {
@@ -74,7 +71,8 @@
 <template>
   <div class="photos-section">
     <div class = "photos-management">
-        <div class = "buttons-container"><div class = "order-by-container">
+        <div class = "buttons-container">
+            <div class = "order-by-container">
             <OrderDropdown>
                 <template slot="toggler">
                 <button
@@ -134,14 +132,15 @@
 </template>
 
 <style>
-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-}
 .photos-management {
     display: flex;
     flex-direction: row;
-    width: 100vw;
+    max-width: 100%;
+}
+.buttons-container {
+    display: flex;
+    flex-direction: row;
+    margin-left: auto;
 }
 .photos-section {
     margin: auto;
@@ -149,15 +148,7 @@ grid {
 }
 .picture {
     height: 40vh;
-    margin: 5px;
-}
-.filter-by-items {
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr 1fr;
-      grid-template-rows: 50px 50px 50px 50px 50px;
-      grid-auto-flow: row;
-      place-items: center;
-
+    margin: 3px;
 }
 .active-tag {
     background-color: black;
