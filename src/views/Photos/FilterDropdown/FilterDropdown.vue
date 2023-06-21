@@ -1,7 +1,7 @@
 <template>
     <div @click="toggle">
       <slot name="toggler">
-        <button class = "filter-by-button">Filter By</button>
+        <button class = "filter-by-button">Filter</button>
       </slot>
       <slot/>
     </div>
@@ -32,7 +32,7 @@
   <style>
   
   .filter-by-button {
-    border: 2px solid rgba(0, 0, 0, .4);
+    border: 1px solid rgba(0, 0, 0, .2);
     margin-left: 2px;
     font-size: 16px;
     padding: 2px;

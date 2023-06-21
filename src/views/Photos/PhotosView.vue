@@ -114,7 +114,7 @@
                 </template>
                 <FilterDropdownContent>
                     <div class = "filter-by-items">                    
-                        <FilterDropdownItem  v-for = "tag in photoTags" :style = "{'background-color': tag.active ? 'black': 'white'}" @click = "filterPhotos(tag.id)">{{ tag.name }}</FilterDropdownItem>
+                        <FilterDropdownItem  v-for = "tag in photoTags" :class="tag.active? 'filter-active': 'filter-inactive'" @click = "filterPhotos(tag.id)">{{ tag.name }}</FilterDropdownItem>
                     </div>
                 </FilterDropdownContent>
             </FilterDropdown>
@@ -140,11 +140,37 @@
 .buttons-container {
     display: flex;
     flex-direction: row;
-    margin-left: auto;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+.order-by-container {
+    margin-left: 10px;
+}
+.filter-by-container {
+    margin-left: 20px;
+}
+.filter-by-items {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 50px 50px 50px 50px 50px;
+    grid-auto-flow: row;
+    place-items: center;
+}
+
+.filter-active {
+    background-color: #D3D3D3;
+    border-radius: 10px;
+    padding: 5px;
+}
+.filter-inactive {
+    background-color: white;
+    padding: 5px;
 }
 .photos-section {
     margin: auto;
     margin-top: 50px;
+    background-color: #F9F9F9;
+    height: 100vh;
 }
 .picture {
     height: 40vh;

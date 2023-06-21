@@ -1,7 +1,7 @@
 <template>
   <div @click="toggle">
     <slot name="toggler">
-      <button class = "order-by-button">Order By</button>
+      <button class = "order-by-button">Order</button>
     </slot>
     <slot/>
   </div>
@@ -32,8 +32,7 @@
 <style>
 
 .order-by-button {
-    border: 2px solid rgba(0, 0, 0, .4);
-    margin-left: 2px;
+    border: 1px solid rgba(0, 0, 0, .2);
     font-size: 16px;
     padding: 2px;
     height: 30px;

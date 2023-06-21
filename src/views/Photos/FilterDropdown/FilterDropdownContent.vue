@@ -37,7 +37,7 @@
       color: black;
       background-color: white;
       font-family: 'Gotham';
-      border: 2px solid rgba(0, 0, 0, .4);
+      border: 1px solid rgba(0, 0, 0, .2);
       border-top-right-radius: 8px;
       border-bottom-left-radius: 8px;
       border-bottom-right-radius: 8px;

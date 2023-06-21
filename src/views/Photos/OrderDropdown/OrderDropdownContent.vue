@@ -30,7 +30,6 @@
     transform: translateY(-5px);
   }
   .order-dropdown-items {
-    margin-left: 2px;
     z-index: 5;
     position: absolute;
     align-items: center;
@@ -39,8 +38,8 @@
     color: black;
     font-family: 'Gotham';
     background-color: white;
-    border: 2px solid rgba(0, 0, 0, .4);
-    width: 90px;
+    border: 1px solid rgba(0, 0, 0, .2);
+    width: 110px;
 
   }
 </style>
