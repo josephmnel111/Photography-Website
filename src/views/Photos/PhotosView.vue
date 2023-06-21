@@ -30,31 +30,48 @@
                     this.photoStore.orderByPlace()
                 }
             },
-            filterPhotos(index) {
-                if (this.photoTags[index].active == true) {
-                    this.photoTags[index].active = false
-                    this.activeTags.delete(this.photoTags[index].name)
-                    this.photoStore.AddPictureByTag(this.activeTags)
+            filterPhotoItems(index) {
+                if (this.photoItems[index].active == true) {
+                    this.photoItems[index].active = false
+                    this.activeItems.delete(this.photoItems[index].name)
+                    this.photoStore.addPictureByTag(this.activeItems, this.activePlaces)
                 } else {
-                    this.photoTags[index].active = true
-                    this.activeTags.set(this.photoTags[index].name, index)
-                    this.photoStore.AddPictureByTag(this.activeTags)
+                    this.photoItems[index].active = true
+                    this.activeItems.set(this.photoItems[index].name)
+                    this.photoStore.addPictureByTag(this.activeItems, this.activePlaces)
                 }
+            },
+            filterPhotoPlaces(index) {
+                if (this.photoPlaces[index].active == true) {
+                    this.photoPlaces[index].active = false
+                    this.activePlaces.delete(this.photoPlaces[index].name)
+                    this.photoStore.addPictureByTag(this.activeItems, this.activePlaces)
+                } else {
+                    this.photoPlaces[index].active = true
+                    this.activePlaces.set(this.photoPlaces[index].name)
+                    this.photoStore.addPictureByTag(this.activeItems, this.activePlaces)
+                }
+
             }
         },
         data: function() {
             return {
-                photoTags: [{id: 0, name: "forest", active: false}, {id: 1, name: "waterfall", active: false}, 
-                {id: 2, name: "nature", active: false}, {id: 3, name: "city", active: false},
-                {id: 4, name: "outlook", active: false}, {id: 5, name: "hey", active: false},
-                {id: 6, name: "there", active: false}, {id: 7, name: "is", active: false},
-                {id: 8, name: "a", active: false}, {id: 9, name: "person", active: false},
-                {id: 10, name: "to", active: false}, {id: 11, name: "look", active: false},
-                {id: 12, name: "out", active: false}, {id: 13, name: "for", active: false},
-                {id: 14, name: "what", active: false}, {id: 15, name: "do", active: false},
-                {id: 16, name: "you", active: false}, {id: 17, name: "know", active: false},
+                photoItems: [{id: 0, name: "forest", active: false}, {id: 1, name: "waterfall", active: false}, 
+                            {id: 2, name: "nature", active: false}, {id: 3, name: "city", active: false},
+                            {id: 4, name: "outlook", active: false}, {id: 5, name: "hey", active: false},
+                            {id: 6, name: "there", active: false}, {id: 7, name: "is", active: false},
+                            {id: 8, name: "a", active: false}, {id: 9, name: "person", active: false},
+                            {id: 10, name: "to", active: false}, {id: 11, name: "look", active: false},
+                            {id: 12, name: "out", active: false}, {id: 13, name: "for", active: false},
+                            {id: 14, name: "what", active: false}, {id: 15, name: "do", active: false},
+                            {id: 16, name: "you", active: false}, {id: 17, name: "know", active: false},
                 ],
-                activeTags : new Map()
+                photoPlaces: [{id: 0, name: "Tokyo", active: false},{id: 1, name: "San Francisco", active: false},
+                              {id: 2, name: "New York City", active: false},{id: 3, name: "Los Angeles", active: false},
+                              {id: 4, name: "Washington D.C.", active: false},{id: 5, name: "Miami", active: false},
+                ],
+                activeItems : new Map(),
+                activePlaces: new Map()
             }
         },
         components: {
@@ -113,8 +130,23 @@
                 </button>
                 </template>
                 <FilterDropdownContent>
-                    <div class = "filter-by-items">                    
-                        <FilterDropdownItem  v-for = "tag in photoTags" :class="tag.active? 'filter-active': 'filter-inactive'" @click = "filterPhotos(tag.id)">{{ tag.name }}</FilterDropdownItem>
+                    <div class = "filter-options">
+                        <div class = "filter-items-container">
+                            <div class = "filter-title">
+                                Tags
+                            </div>
+                            <div class = "filter-by-items">                    
+                                <FilterDropdownItem  v-for = "item in photoItems" :class="item.active? 'filter-active': 'filter-inactive'" @click = "filterPhotoItems(item.id)">{{ item.name }}</FilterDropdownItem>
+                            </div>
+                        </div>
+                        <div class = "filter-places-container">
+                            <div class = "filter-title">
+                                Place
+                            </div>
+                            <div class = "filter-by-place">
+                                <FilterDropdownItem v-for = "place in photoPlaces" :class="place.active? 'filter-active': 'filter-inactive'" @click = "filterPhotoPlaces(place.id)">{{ place.name }}</FilterDropdownItem>
+                            </div>
+                        </div>
                     </div>
                 </FilterDropdownContent>
             </FilterDropdown>
@@ -156,7 +188,19 @@
     grid-auto-flow: row;
     place-items: center;
 }
-
+.filter-by-place {
+    place-items: center;
+}
+.filter-title {
+    text-align: center;
+}
+.filter-options {
+    display: flex;
+    flex-direction: row;
+}
+.filter-places-container {
+    text-align: center;
+}
 .filter-active {
     background-color: #D3D3D3;
     border-radius: 10px;

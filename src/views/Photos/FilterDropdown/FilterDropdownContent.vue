@@ -41,7 +41,7 @@
       border-top-right-radius: 8px;
       border-bottom-left-radius: 8px;
       border-bottom-right-radius: 8px;
-      width: 300px;
+      width: 400px;
     }
   </style>
   
