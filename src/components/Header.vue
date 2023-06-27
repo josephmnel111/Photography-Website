@@ -36,10 +36,12 @@ import { RouterLink, RouterView } from 'vue-router'
     }
     .router-link:hover {
         background-color: white;
+        color: blue;
     }
     .router-link {
         margin: 2vw;
         color: black;
+        text-decoration: none;
         font-weight: 1000;
         font-size: 14px;
     }

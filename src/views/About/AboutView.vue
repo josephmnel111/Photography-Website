@@ -1,10 +1,22 @@
-<script setup>
+<script>
+  export default {
+    data () {
+      return {
+        aboutStory: "Kylie JOnes"
+
+      }
+    }
+  }
 </script>
 <template>
   <div class="about-container">
     <div class="about">
-      <h1>This is an about page</h1>
-      <DocumentationIcon/>
+      <div class = "about-story">
+        {{ aboutStory }}
+      </div>
+      <div class = "about-image">
+
+      </div>
     </div>
   </div>
 </template>
@@ -14,6 +26,12 @@
     position: relative;
     height: 100vh;
     width: 100vw;
+  }
+  .about-story {
+    left: 50%;
+  }
+  .about-image {
+    right: 50%;
   }
   .about {
     font-size: 15px;

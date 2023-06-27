@@ -5,7 +5,7 @@
 
   </div>
   <div class="home">
-    Home Page
+    Kylie Photography
   </div>
 </template>
 <style>
@@ -16,7 +16,7 @@
   }
   .home {
     font-family: 'GreatVibes';
-    font-size: 52px;
+    font-size: 60px;
     position: absolute;
     top: 50%;
     left: 50%;

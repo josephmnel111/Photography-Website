@@ -25,8 +25,12 @@
             },
             orderPhotos(option) {
                 if (option == "Date") {
+                    this.dateOrderActive = true
+                    this.placeOrderActive = false
                     this.photoStore.orderByDate()
                 } else {
+                    this.dateOrderActive = false
+                    this.placeOrderActive = true
                     this.photoStore.orderByPlace()
                 }
             },
@@ -70,6 +74,8 @@
                               {id: 2, name: "New York City", active: false},{id: 3, name: "Los Angeles", active: false},
                               {id: 4, name: "Washington D.C.", active: false},{id: 5, name: "Miami", active: false},
                 ],
+                dateOrderActive: true,
+                placeOrderActive: false,
                 activeItems : new Map(),
                 activePlaces: new Map()
             }
@@ -91,44 +97,14 @@
         <div class = "buttons-container">
             <div class = "order-by-container">
             <OrderDropdown>
-                <template slot="toggler">
-                <button
-                    class = "order-by-button"
-                >
-                    Click me
-                    <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 24 24"
-                    >
-                    <path
-                        d="M15.3 9.3a1 1 0 0 1 1.4 1.4l-4 4a1 1 0 0 1-1.4 0l-4-4a1 1 0 0 1 1.4-1.4l3.3 3.29 3.3-3.3z"
-                    ></path>
-                    </svg>
-                </button>
-                </template>
                 <OrderDropdownContent>
-                    <OrderDropdownItem @click = "orderPhotos('Date')">Date</OrderDropdownItem>
-                    <OrderDropdownItem @click = "orderPhotos('Place')">Place</OrderDropdownItem>
+                    <OrderDropdownItem @click = "orderPhotos('Date')" :class="dateOrderActive? 'order-active': 'order-inactive'">Date</OrderDropdownItem>
+                    <OrderDropdownItem @click = "orderPhotos('Place')" :class="placeOrderActive? 'order-active': 'order-inactive'">Place</OrderDropdownItem>
                 </OrderDropdownContent>
             </OrderDropdown>
         </div>
         <div class = "filter-by-container">
             <FilterDropdown>
-                <template slot="toggler">
-                <button
-                    class = "order-by-button"
-                >
-                    Click me
-                    <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 24 24"
-                    >
-                    <path
-                        d="M15.3 9.3a1 1 0 0 1 1.4 1.4l-4 4a1 1 0 0 1-1.4 0l-4-4a1 1 0 0 1 1.4-1.4l3.3 3.29 3.3-3.3z"
-                    ></path>
-                    </svg>
-                </button>
-                </template>
                 <FilterDropdownContent>
                     <div class = "filter-options">
                         <div class = "filter-items-container">
@@ -136,7 +112,7 @@
                                 Tags
                             </div>
                             <div class = "filter-by-items">                    
-                                <FilterDropdownItem  v-for = "item in photoItems" :class="item.active? 'filter-active': 'filter-inactive'" @click = "filterPhotoItems(item.id)">{{ item.name }}</FilterDropdownItem>
+                                <FilterDropdownItem  v-for = "item in photoItems" :class="item.active? 'filter-item-active': 'filter-item-inactive'" @click = "filterPhotoItems(item.id)">{{ item.name }}</FilterDropdownItem>
                             </div>
                         </div>
                         <div class = "filter-places-container">
@@ -144,7 +120,7 @@
                                 Place
                             </div>
                             <div class = "filter-by-place">
-                                <FilterDropdownItem v-for = "place in photoPlaces" :class="place.active? 'filter-active': 'filter-inactive'" @click = "filterPhotoPlaces(place.id)">{{ place.name }}</FilterDropdownItem>
+                                <FilterDropdownItem v-for = "place in photoPlaces" :class="place.active? 'filter-place-active': 'filter-place-inactive'" @click = "filterPhotoPlaces(place.id)">{{ place.name }}</FilterDropdownItem>
                             </div>
                         </div>
                     </div>
@@ -201,12 +177,33 @@
 .filter-places-container {
     text-align: center;
 }
-.filter-active {
-    background-color: #D3D3D3;
+.order-active {
+    text-align: center;
+    height: 100%;
+    width: 100%;
+    background-color: #eeeee4
+}
+.order-inactive {
+    text-align: center;
+    height: 100%;
+    width: 100%;
+    background-color: white
+}
+.filter-item-active {
+    background-color: #eeeee4;
     border-radius: 10px;
     padding: 5px;
 }
-.filter-inactive {
+.filter-item-inactive {
+    background-color: white;
+    padding: 5px;
+}
+.filter-place-active {
+    background-color: #eeeee4;
+    border-radius: 10px;
+    padding: 5px;
+}
+.filter-place-inactive {
     background-color: white;
     padding: 5px;
 }

@@ -39,7 +39,8 @@
     font-family: 'Gotham';
     background-color: white;
     border: 1px solid rgba(0, 0, 0, .2);
-    width: 110px;
+    width: 220px;
+    height: 70px;
 
   }
 </style>

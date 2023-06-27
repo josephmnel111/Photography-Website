@@ -1,7 +1,7 @@
 <template>
-    <div @click="toggle">
+    <div>
       <slot name="toggler">
-        <button class = "filter-by-button">Filter</button>
+        <button class = "filter-by-button" @click="toggle">Filter</button>
       </slot>
       <slot/>
     </div>
