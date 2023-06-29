@@ -20,15 +20,6 @@
   }
 </script>
 <style>
-  .dropdown-content-enter-active,
-  .dropdown-content-leave-active {
-    transition: all 0.2s;
-  }
-  .dropdown-content-enter,
-  .dropdown-content-leave-to {
-    opacity: 0;
-    transform: translateY(-5px);
-  }
   .order-dropdown-items {
     z-index: 5;
     position: absolute;
@@ -39,8 +30,8 @@
     font-family: 'Gotham';
     background-color: white;
     border: 1px solid rgba(0, 0, 0, .2);
-    width: 220px;
-    height: 70px;
+    width: 13vw;
+    height: 12vh;
 
   }
 </style>

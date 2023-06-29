@@ -38,9 +38,9 @@
       background-color: white;
       font-family: 'Gotham';
       border: 1px solid rgba(0, 0, 0, .2);
-      border-top-right-radius: 8px;
-      border-bottom-left-radius: 8px;
-      border-bottom-right-radius: 8px;
+      border-top-right-radius: 12px;
+      border-bottom-left-radius: 12px;
+      border-bottom-right-radius: 12px;
       width: 400px;
     }
   </style>

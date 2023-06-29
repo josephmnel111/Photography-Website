@@ -35,8 +35,8 @@
     border: 1px solid rgba(0, 0, 0, .2);
     font-size: 16px;
     padding: 2px;
-    height: 30px;
-    width: 90px;
+    height: 6vh;
+    width: 13vw;
     background-color: white;
 }
 </style>

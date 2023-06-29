@@ -5,7 +5,9 @@ import { RouterLink, RouterView } from 'vue-router'
 <template>
     <div class="header">
         <div class = "header-left">
-
+            <nav>
+                <RouterLink to="/" class = "left-symbol">K  P</RouterLink>
+            </nav>
         </div>
         <div class = "header-right">
             <nav>
@@ -34,6 +36,12 @@ import { RouterLink, RouterView } from 'vue-router'
         background-color: white;
         border-bottom: 2px solid rgba(0, 0, 0, .2);
     }
+    .left-symbol {
+        font-family: 'GreatVibes';
+        text-decoration: none;
+        font-weight: 1000;
+        left: 0;
+    }
     .router-link:hover {
         background-color: white;
         color: blue;
@@ -47,6 +55,7 @@ import { RouterLink, RouterView } from 'vue-router'
     }
     .header-left {
         width: 50%;
+        left: 0;
     }
     .header-right {
         width: 50%;

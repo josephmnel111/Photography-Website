@@ -1,18 +1,10 @@
 <script>
-  export default {
-    data () {
-      return {
-        aboutStory: "Kylie JOnes"
-
-      }
-    }
-  }
 </script>
 <template>
   <div class="about-container">
     <div class="about">
       <div class = "about-story">
-        {{ aboutStory }}
+        {{ "My name is Kylie Jones, and I am a freelance photographer in Michigan. I enjoy activities like hiking, skiing, and travelling. " }}
       </div>
       <div class = "about-image">
 

@@ -36,8 +36,8 @@
     margin-left: 2px;
     font-size: 16px;
     padding: 2px;
-    height: 30px;
-    width: 90px;
+    height: 40px;
+    width: 170px;
     background-color: white;
   }
   </style>

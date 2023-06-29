@@ -97,7 +97,7 @@
         <div class = "buttons-container">
             <div class = "order-by-container">
             <OrderDropdown>
-                <OrderDropdownContent>
+                <OrderDropdownContent class = "order-dropdown">
                     <OrderDropdownItem @click = "orderPhotos('Date')" :class="dateOrderActive? 'order-active': 'order-inactive'">Date</OrderDropdownItem>
                     <OrderDropdownItem @click = "orderPhotos('Place')" :class="placeOrderActive? 'order-active': 'order-inactive'">Place</OrderDropdownItem>
                 </OrderDropdownContent>
@@ -114,6 +114,9 @@
                             <div class = "filter-by-items">                    
                                 <FilterDropdownItem  v-for = "item in photoItems" :class="item.active? 'filter-item-active': 'filter-item-inactive'" @click = "filterPhotoItems(item.id)">{{ item.name }}</FilterDropdownItem>
                             </div>
+                        </div>
+                        <div class = "filter-separator-container">
+
                         </div>
                         <div class = "filter-places-container">
                             <div class = "filter-title">
@@ -177,17 +180,24 @@
 .filter-places-container {
     text-align: center;
 }
+.filter-separator-container {
+    width: 2px;
+    color: black;
+    background-color: black;
+    height: 100%;
+}
 .order-active {
     text-align: center;
     height: 100%;
     width: 100%;
-    background-color: #eeeee4
+    background-color: #eeeee4;
 }
 .order-inactive {
     text-align: center;
     height: 100%;
     width: 100%;
-    background-color: white
+    background-color: white;
+    border-radius: inherit;
 }
 .filter-item-active {
     background-color: #eeeee4;
