@@ -1,7 +1,14 @@
 <template>
   <div @click="toggle">
     <slot name="toggler">
-      <button class = "order-by-button">Order</button>
+      <button class = "order-by-button">
+        <div class = "word-container">
+            Order
+        </div>
+        <div class = "symbol-container">
+          <font-awesome-icon class = "toggleUpDown" :class='{"rotate": buttonActive}' icon="caret-down"></font-awesome-icon>
+        </div>
+      </button>
     </slot>
     <slot/>
   </div>
@@ -19,12 +26,15 @@
       return {
         sharedState: {
           active: false
-        }
+        },
+        buttonActive: false
+
       }
     },
     methods: {
       toggle () {
         this.sharedState.active = !this.sharedState.active
+        this.buttonActive = !this.buttonActive
       }
     }
   }
@@ -32,11 +42,15 @@
 <style>
 
 .order-by-button {
-    border: 1px solid rgba(0, 0, 0, .2);
-    font-size: 16px;
-    padding: 2px;
-    height: 6vh;
-    width: 13vw;
-    background-color: white;
+  display: flex;
+  flex-direction: row;
+  border: 1px solid rgba(0, 0, 0, .2);
+  font-size: 16px;
+  padding: 2px;
+  height: 6vh;
+  width: 13vw;
+  background-color: white;
+  border-radius: 8px;
+  align-items: center;
 }
 </style>

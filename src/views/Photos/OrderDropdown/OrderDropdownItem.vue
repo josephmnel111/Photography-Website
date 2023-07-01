@@ -18,9 +18,9 @@
   </script>
 <style>
 .order-item {
-  margin-top: 1px;
-  margin-bottom: 1px;
   background-color: white;
+  display: flex;
+  align-items: center;
 }
 </style>
   

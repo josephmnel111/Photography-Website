@@ -98,8 +98,16 @@
             <div class = "order-by-container">
             <OrderDropdown>
                 <OrderDropdownContent class = "order-dropdown">
-                    <OrderDropdownItem @click = "orderPhotos('Date')" :class="dateOrderActive? 'order-active': 'order-inactive'">Date</OrderDropdownItem>
-                    <OrderDropdownItem @click = "orderPhotos('Place')" :class="placeOrderActive? 'order-active': 'order-inactive'">Place</OrderDropdownItem>
+                    <OrderDropdownItem @click = "orderPhotos('Date')" :class="dateOrderActive? 'order-active': 'order-inactive'">
+                        <div class = "order-item-values">
+                            Date
+                        </div>
+                    </OrderDropdownItem>
+                    <OrderDropdownItem @click = "orderPhotos('Place')" :class="placeOrderActive? 'order-active': 'order-inactive'">
+                        <div class = "order-item-values">
+                            Place
+                        </div>
+                    </OrderDropdownItem>
                 </OrderDropdownContent>
             </OrderDropdown>
         </div>
@@ -186,14 +194,16 @@
     background-color: black;
     height: 100%;
 }
+.order-item-values {
+    margin-left: 15px;
+
+}
 .order-active {
-    text-align: center;
     height: 100%;
     width: 100%;
     background-color: #eeeee4;
 }
 .order-inactive {
-    text-align: center;
     height: 100%;
     width: 100%;
     background-color: white;

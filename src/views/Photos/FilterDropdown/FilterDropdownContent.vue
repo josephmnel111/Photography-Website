@@ -1,11 +1,12 @@
 <template>
-    <transition name = "dropdown-content"></transition>
-    <div 
-      v-if="active"
-      class="filter-dropdown-items"
-      >
-      <slot/>
-    </div>
+     <transition name = "slide">
+      <div 
+        v-if="active"
+        class="filter-dropdown-items"
+        >
+        <slot/>
+      </div>
+    </transition>
   </template>
   
   <script>
@@ -20,16 +21,8 @@
     }
   </script>
   <style>
-    .dropdown-content-enter-active,
-    .dropdown-content-leave-active {
-      transition: all 0.2s;
-    }
-    .dropdown-content-enter,
-    .dropdown-content-leave-to {
-      opacity: 0;
-      transform: translateY(-5px);
-    }
     .filter-dropdown-items {
+      margin-top: 5px;
       margin-left: 2px;
       position: absolute;
       z-index: 5;
@@ -38,10 +31,14 @@
       background-color: white;
       font-family: 'Gotham';
       border: 1px solid rgba(0, 0, 0, .2);
-      border-top-right-radius: 12px;
-      border-bottom-left-radius: 12px;
-      border-bottom-right-radius: 12px;
+      border-radius: 12px;
       width: 400px;
+      transform-origin: top;
+      transition: transform .3s ease-in-out;
+      overflow: hidden;
+    }
+    .slide-enter, .slide-leave-to{
+      transform: scaleY(0);
     }
   </style>
   

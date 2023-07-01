@@ -1,12 +1,20 @@
 <script>
+import { defineComponent } from 'vue';
 import { RouterLink, RouterView } from 'vue-router'
+export default defineComponent({
+    data: function() {
+        return {
+            leftSymbol: "K P"
+        }
+    }
+})
 
 </script>
 <template>
     <div class="header">
         <div class = "header-left">
             <nav>
-                <RouterLink to="/" class = "left-symbol">K  P</RouterLink>
+                <RouterLink to="/" class = "left-symbol">K &nbsp;P</RouterLink>
             </nav>
         </div>
         <div class = "header-right">
@@ -42,9 +50,12 @@ import { RouterLink, RouterView } from 'vue-router'
         font-weight: 1000;
         left: 0;
     }
+    .left-symbol:hover {
+        color: #007C7C
+    }
     .router-link:hover {
         background-color: white;
-        color: blue;
+        color: #007C7C;
     }
     .router-link {
         margin: 2vw;
@@ -56,6 +67,8 @@ import { RouterLink, RouterView } from 'vue-router'
     .header-left {
         width: 50%;
         left: 0;
+        text-align: left;
+        margin-left: 20px;
     }
     .header-right {
         width: 50%;
