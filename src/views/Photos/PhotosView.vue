@@ -4,9 +4,12 @@
     import OrderDropdown from './OrderDropdown/OrderDropdown.vue'
     import OrderDropdownContent from './OrderDropdown/OrderDropdownContent.vue'
     import OrderDropdownItem from './OrderDropdown/OrderDropdownItem.vue'
-    import FilterDropdown from './FilterDropdown/FilterDropdown.vue'
-    import FilterDropdownContent from './FilterDropdown/FilterDropdownContent.vue'
-    import FilterDropdownItem from './FilterDropdown/FilterDropdownItem.vue'
+    import TagDropdown from './TagDropdown/TagDropdown.vue'
+    import TagDropdownContent from './TagDropdown/TagDropdownContent.vue'
+    import TagDropdownItem from './TagDropdown/TagDropdownItem.vue'
+    import PlaceDropdown from './PlaceDropdown/PlaceDropdown.vue'
+    import PlaceDropdownContent from './PlaceDropdown/PlaceDropdownContent.vue'
+    import PlaceDropdownItem from './PlaceDropdown/PlaceDropdownItem.vue'
 
     export default defineComponent({
 
@@ -35,6 +38,7 @@
                 }
             },
             filterPhotoItems(index) {
+                console.log('hi')
                 if (this.photoItems[index].active == true) {
                     this.photoItems[index].active = false
                     this.activeItems.delete(this.photoItems[index].name)
@@ -84,9 +88,12 @@
     OrderDropdown,
     OrderDropdownContent,
     OrderDropdownItem,
-    FilterDropdown,
-    FilterDropdownContent,
-    FilterDropdownItem
+    TagDropdown,
+    TagDropdownContent,
+    TagDropdownItem,
+    PlaceDropdown,
+    PlaceDropdownContent,
+    PlaceDropdownItem,
 }
     })
 
@@ -97,7 +104,7 @@
         <div class = "buttons-container">
             <div class = "order-by-container">
             <OrderDropdown>
-                <OrderDropdownContent class = "order-dropdown">
+                <OrderDropdownContent>
                     <OrderDropdownItem @click = "orderPhotos('Date')" :class="dateOrderActive? 'order-active': 'order-inactive'">
                         <div class = "order-item-values">
                             Date
@@ -112,31 +119,37 @@
             </OrderDropdown>
         </div>
         <div class = "filter-by-container">
-            <FilterDropdown>
-                <FilterDropdownContent>
+            <TagDropdown>
+                <TagDropdownContent>
                     <div class = "filter-options">
                         <div class = "filter-items-container">
                             <div class = "filter-title">
                                 Tags
                             </div>
                             <div class = "filter-by-items">                    
-                                <FilterDropdownItem  v-for = "item in photoItems" :class="item.active? 'filter-item-active': 'filter-item-inactive'" @click = "filterPhotoItems(item.id)">{{ item.name }}</FilterDropdownItem>
-                            </div>
-                        </div>
-                        <div class = "filter-separator-container">
-
-                        </div>
-                        <div class = "filter-places-container">
-                            <div class = "filter-title">
-                                Place
-                            </div>
-                            <div class = "filter-by-place">
-                                <FilterDropdownItem v-for = "place in photoPlaces" :class="place.active? 'filter-place-active': 'filter-place-inactive'" @click = "filterPhotoPlaces(place.id)">{{ place.name }}</FilterDropdownItem>
+                                <TagDropdownItem v-for = "item in photoItems" :class="item.active? 'filter-item-active': 'filter-item-inactive'" @click = "filterPhotoItems(item.id)">{{ item.name }}</TagDropdownItem>
                             </div>
                         </div>
                     </div>
-                </FilterDropdownContent>
-            </FilterDropdown>
+                </TagDropdownContent>
+            </TagDropdown>
+        </div>
+
+        <div class = "order-by-container">
+            <PlaceDropdown>
+                <PlaceDropdownContent>
+                    <div class = "filter-options">
+                        <div class = "filter-items-container">
+                            <div class = "filter-title">
+                                Place
+                            </div>
+                            <div class = "filter-item-values">                    
+                                <PlaceDropdownItem v-for = "item in photoPlaces" :class="item.active? 'filter-item-active': 'filter-item-inactive'" @click = "filterPhotoPlaces(item.id)">{{ item.name }}</PlaceDropdownItem>
+                            </div>
+                        </div>
+                    </div>
+                </PlaceDropdownContent>
+            </PlaceDropdown>
         </div>
 
         </div>
@@ -195,8 +208,10 @@
     height: 100%;
 }
 .order-item-values {
+    display: flex;
+    align-items: center;
+    height: 6vh;
     margin-left: 15px;
-
 }
 .order-active {
     height: 100%;
@@ -207,7 +222,6 @@
     height: 100%;
     width: 100%;
     background-color: white;
-    border-radius: inherit;
 }
 .filter-item-active {
     background-color: #eeeee4;

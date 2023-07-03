@@ -1,6 +1,7 @@
 <script>
 
   import { defineComponent } from 'vue';
+  import emailjs from 'emailjs-com';
 
   export default defineComponent({
 
@@ -8,7 +9,7 @@
       return {
         firstName: '',
         lastName: '',
-        email: '',
+        emailAddress: '',
         phoneNumber: '',
         comment: '',
 
@@ -22,6 +23,29 @@
       }
     },
     methods: {
+      sendEmail(e) {
+        try {
+          emailjs.sendForm('service_7yp64md', 'template_7zt70h6', e.target,
+          'JZwARAYCRy4wAr2jr', {
+            firstName: this.firstName,
+            lastName: this.lastName,
+            emailAddress: this.emailAddress,
+            phoneNumber: this.phoneNumber,
+            comment: this.comment
+        })
+
+      } catch(error) {
+          console.log({error})
+      }
+
+      },
+      clearValues() {
+          document.getElementById('firstName').value = ''
+          document.getElementById('lastName').value = ''
+          document.getElementById('emailAddress').value = ''
+          document.getElementById('phoneNumber').value = ''
+          document.getElementById('comment').value = ''
+      },
       checkFormFilled() { //Checks to see if the required inputs are filled
         this.valid = true
         if (this.firstName == '') {
@@ -36,7 +60,7 @@
         } else {
           this.lastNameInvalid = false
         }
-        if (this.email == '') {
+        if (this.emailAddress == '') {
           this.valid = false
           this.emailInvalid = true
         } else {
@@ -50,29 +74,31 @@
         }
 
         if (this.valid == true) { //Changes all values to '' on successful submit
-          document.getElementById('firstName').value = ''
-          document.getElementById('lastName').value = ''
-          document.getElementById('emailAddress').value = ''
-          document.getElementById('phoneNumber').value = ''
-          document.getElementById('comments').value = ''
 
           this.success = true;
           setTimeout(()=>{  //Sets a successful submit message for 2 seconds                   
             this.success = false;
           }, 2000);
-
+          return true
+        } else {
+          return false
         }
 
       },
 
       submitValues(submitEvent) { //Changes all the values on submit
-        this.firstName = submitEvent.target.elements.FirstName.value
-        this.lastName = submitEvent.target.elements.LastName.value
-        this.email = submitEvent.target.elements.EmailAddress.value
-        this.phoneNumber = submitEvent.target.elements.PhoneNumber.value
-        this.comment = submitEvent.target.elements.Comments.value
+        this.firstName = submitEvent.target.elements.firstName.value
+        this.lastName = submitEvent.target.elements.lastName.value
+        this.emailAddress = submitEvent.target.elements.emailAddress.value
+        this.phoneNumber = submitEvent.target.elements.phoneNumber.value
+        this.comment = submitEvent.target.elements.comment.value
 
-        this.checkFormFilled()
+        let success = this.checkFormFilled()
+
+        if (success == true) { //If message can be successfully sent, send to email
+          this.sendEmail(submitEvent)
+          this.clearValues()
+        }
 
       }
     }
@@ -83,18 +109,18 @@
   <div class = "contact-me-container">
     <div class="contact-me">
     <h1>Contact Me</h1>
-    <form @submit.prevent="submitValues">
+    <form @submit.prevent="submitValues" id = "submission-form">
 
       <div class = "name-container">
         
         <div class = "input-container">
           <label class = "input-box-label" for="FirstName">FIRST NAME</label>
-          <textarea id = "firstName" class = "input-box" :class='{"error": firstNameInvalid}' name="FirstName" type="text"></textarea>
+          <textarea id = "firstName" class = "input-box" :class='{"error": firstNameInvalid}' name="firstName" type="text"></textarea>
         </div>
 
         <div class = "input-container">
           <label class = "input-box-label" for="LastName">LAST NAME</label>
-          <textarea id = "lastName" class = "input-box" :class='{"error": lastNameInvalid}' name="LastName" type="text"></textarea>
+          <textarea id = "lastName" class = "input-box" :class='{"error": lastNameInvalid}' name="lastName" type="text"></textarea>
         </div>
       </div>
 
@@ -103,19 +129,19 @@
 
         <div class = "input-container">
           <label class = "input-box-label" for="FromEmailAddress">EMAIL ADDRESS</label>
-          <textarea id = "emailAddress" class = "input-box" :class='{"error": emailInvalid}' name="EmailAddress" type="text"></textarea>
+          <textarea id = "emailAddress" class = "input-box" :class='{"error": emailInvalid}' name="emailAddress" type="text"></textarea>
         </div>
 
         <div class = "input-container">
           <label class = "input-box-label" for="PhoneNumber">PHONE NUMBER</label>
-          <textarea id = "phoneNumber" class = "input-box" name="PhoneNumber" type="text"></textarea>
+          <textarea id = "phoneNumber" class = "input-box" name="phoneNumber" type="text"></textarea>
         </div>
 
       </div>
 
       <div class = "input-container">
         <label class = "input-box-label" for="Comments">COMMENTS</label>
-        <textarea id = "comments" class = "comment-box" name="Comments" :class='{"error": commentInvalid}' rows="7" cols="40" type = "text"></textarea>
+        <textarea id = "comment" class = "comment-box" name="comment" :class='{"error": commentInvalid}' rows="7" cols="40" type = "text"></textarea>
       </div>
       <div class = "error-container" :class='{"hide-error": valid}'>
         Please fill in the required sections.

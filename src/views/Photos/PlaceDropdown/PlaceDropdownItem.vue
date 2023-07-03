@@ -1,5 +1,5 @@
 <template>
-    <div @click = "FilterByValue()" class = "order-item">
+    <div class = "order-item">
       <div>
         <slot/>
       </div>
@@ -8,12 +8,7 @@
   
   <script>
     export default {
-        name: "FilterDropdownPlace",
-        methods: {
-          FilterByValue() {
-            
-          }
-        }
+        name: "PlaceDropdownItem",
     };
   </script>
 <style>

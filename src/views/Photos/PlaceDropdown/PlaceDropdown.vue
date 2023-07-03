@@ -3,7 +3,7 @@
       <slot name="toggler">
         <button class = "filter-by-button" @click="toggle">
           <div class = "word-container">
-            Filter
+            Place
           </div>
           <div class = "symbol-container">
             <font-awesome-icon class = "toggleUpDown" :class='{"rotate": buttonActive}' icon="caret-down"></font-awesome-icon>
@@ -16,7 +16,7 @@
   
   <script>
     export default {
-      name: 'FilterDropdown',
+      name: 'PlaceDropdown',
       provide () {
         return {
           sharedState: this.sharedState

@@ -1,5 +1,10 @@
 <template>
-  <transition name = "slide">
+  <transition 
+    name = "expand"
+    @enter="enter"
+    @after-enter="afterEnter"
+    @leave="leave"
+  >
   <div 
     v-if="active"
     class="order-dropdown-items"
@@ -10,12 +15,37 @@
 </template>
 
 <script>
+
   export default {
     name: 'OrderDropdownContent',
     inject: ['sharedState'],
     computed: {
       active () {
         return this.sharedState.active
+      }
+    },
+    methods: {
+      enter(el) {
+        el.style.height = 'auto'
+        const height = getComputedStyle(el).height
+        el.style.height = 0
+
+        getComputedStyle(el)
+
+        setTimeout(() => {
+          el.style.height = height
+        });
+      }, 
+      afterEnter(el) {
+        el.style.height = 'auto'
+      },
+      leave(el) {
+        el.style.height = getComputedStyle(el).height
+        getComputedStyle(el)
+
+        setTimeout(() => {
+          el.style.height = 0
+        });
       }
     }
   }
@@ -32,13 +62,13 @@
     background-color: white;
     border: 1px solid rgba(0, 0, 0, .2);
     border-radius: 8px;
+    overflow: hidden;
     width: 13vw;
     height: 12vh;
     transform-origin: top;
-    transition: transform .3s ease-in-out;
-    overflow: hidden;
   }
-  .slide-enter, .slide-leave-to{
-    transform: scaleY(0);
+  .expand-enter-active, .expand-leave-active {
+    transition: height .2s ease-in-out;
+    overflow: hidden;
   }
 </style>

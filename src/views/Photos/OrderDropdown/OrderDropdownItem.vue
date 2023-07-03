@@ -1,5 +1,5 @@
 <template>
-    <div @click = "OrderByValue()" class = "order-item">
+    <div class = "order-item">
       <div>
         <slot/>
       </div>
@@ -10,9 +10,6 @@
     export default {
         name: "OrderDropdownItem",
         methods: {
-          OrderByValue() {
-            console.log('hi')
-          }
         }
     };
   </script>
@@ -20,7 +17,7 @@
 .order-item {
   background-color: white;
   display: flex;
-  align-items: center;
+  align-self: center;
 }
 </style>
   
