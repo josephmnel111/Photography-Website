@@ -6,7 +6,7 @@
             Order
         </div>
         <div class = "symbol-container">
-          <font-awesome-icon class = "toggleUpDown" :class='{"rotate": buttonActive}' icon="caret-down"></font-awesome-icon>
+          <font-awesome-icon class = "toggleUpDown" :class='{"rotate": this.sharedState.active}' icon="caret-down"></font-awesome-icon>
         </div>
       </button>
     </slot>
@@ -27,14 +27,12 @@
         sharedState: {
           active: false
         },
-        buttonActive: false
 
       }
     },
     methods: {
       toggle () {
         this.sharedState.active = !this.sharedState.active
-        this.buttonActive = !this.buttonActive
       }
     }
   }

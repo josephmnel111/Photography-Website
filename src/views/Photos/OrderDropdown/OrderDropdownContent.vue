@@ -27,7 +27,9 @@
     },
     methods: {
       close(e){
-        console.writeline(e);
+        if (!this.$el.contains(e.target)) {
+          this.sharedState.active = false
+        }
       },
       enter(el) {
         el.style.height = 'auto'
@@ -41,6 +43,7 @@
         });
       }, 
       afterEnter(el) {
+        document.addEventListener('click', this.close)
         el.style.height = 'auto'
       },
       leave(el) {
@@ -50,15 +53,8 @@
         setTimeout(() => {
           el.style.height = 0
         });
-      },
-      mounted()
-      {
-        document.addEventListener('click', this.close)
-      },
-      beforeDestroy()
-      {
         document.removeEventListener('click', this.close)
-      }
+      },
     }
   }
 </script>

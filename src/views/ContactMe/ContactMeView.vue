@@ -187,6 +187,7 @@
 .input-box-label {
   font-size: 14px;
   margin-bottom: 10px;
+  text-align: center;
 }
 .input-box {
   border-color: black;
