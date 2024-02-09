@@ -14,10 +14,5 @@
     };
   </script>
 <style>
-.order-item {
-  background-color: white;
-  display: flex;
-  align-self: center;
-}
 </style>
   

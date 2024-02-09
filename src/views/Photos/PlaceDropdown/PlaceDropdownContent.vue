@@ -62,9 +62,8 @@
         border: 1px solid rgba(0, 0, 0, .2);
         border-radius: 8px;
         overflow: hidden;
-        width: 13vw;
-        height: 12vh;
         transform-origin: top;
+        width: 13vw;
   }
   .expand-enter-active, .expand-leave-active {
     transition: height .2s ease-in-out;

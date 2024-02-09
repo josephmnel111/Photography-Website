@@ -16,6 +16,7 @@
 
 <script>
 
+
   export default {
     name: 'OrderDropdownContent',
     inject: ['sharedState'],
@@ -25,6 +26,9 @@
       }
     },
     methods: {
+      close(e){
+        console.writeline(e);
+      },
       enter(el) {
         el.style.height = 'auto'
         const height = getComputedStyle(el).height
@@ -46,13 +50,21 @@
         setTimeout(() => {
           el.style.height = 0
         });
+      },
+      mounted()
+      {
+        document.addEventListener('click', this.close)
+      },
+      beforeDestroy()
+      {
+        document.removeEventListener('click', this.close)
       }
     }
   }
 </script>
 <style>
   .order-dropdown-items {
-    margin-top: 5px;
+    margin-top: .5%;
     z-index: 5;
     position: absolute;
     display: flex;
@@ -63,9 +75,8 @@
     border: 1px solid rgba(0, 0, 0, .2);
     border-radius: 8px;
     overflow: hidden;
-    width: 13vw;
-    height: 12vh;
     transform-origin: top;
+    width: 13vw;
   }
   .expand-enter-active, .expand-leave-active {
     transition: height .2s ease-in-out;

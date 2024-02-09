@@ -123,11 +123,10 @@
                 <TagDropdownContent>
                     <div class = "filter-options">
                         <div class = "filter-items-container">
-                            <div class = "filter-title">
-                                Tags
-                            </div>
                             <div class = "filter-by-items">                    
-                                <TagDropdownItem v-for = "item in photoItems" :class="item.active? 'filter-item-active': 'filter-item-inactive'" @click = "filterPhotoItems(item.id)">{{ item.name }}</TagDropdownItem>
+                                <TagDropdownItem v-for = "item in photoItems" :class="item.active? 'filter-item-active': 'filter-item-inactive'" @click = "filterPhotoItems(item.id)">
+                                        {{ item.name }}
+                                </TagDropdownItem>
                             </div>
                         </div>
                     </div>
@@ -140,11 +139,12 @@
                 <PlaceDropdownContent>
                     <div class = "filter-options">
                         <div class = "filter-items-container">
-                            <div class = "filter-title">
-                                Place
-                            </div>
                             <div class = "filter-item-values">                    
-                                <PlaceDropdownItem v-for = "item in photoPlaces" :class="item.active? 'filter-item-active': 'filter-item-inactive'" @click = "filterPhotoPlaces(item.id)">{{ item.name }}</PlaceDropdownItem>
+                                <PlaceDropdownItem v-for = "item in photoPlaces" :class="item.active? 'order-active': 'order-inactive'" @click = "filterPhotoPlaces(item.id)">
+                                    <div class = "order-item-values">
+                                        {{ item.name }}
+                                    </div>
+                                </PlaceDropdownItem>
                             </div>
                         </div>
                     </div>
@@ -154,9 +154,9 @@
 
         </div>
     </div>
-    <div class = "grid">
-        <div>
-            <img class = "picture" v-for = "photo in photoStore.photos" :style = "{'display': photo.display ? 'inline-block': 'none' }" @click="goToPhoto(photo.id)" :src = "photo.image"/>
+    <div class = "picture-container">
+        <div class = "picture-div">
+            <img class = "picture" v-for = "photo in photoStore.photos" :style = "{'display': photo.display ? 'inline-block': 'none'}" @click="goToPhoto(photo.id)" :src = "photo.image"/>
         </div>
         <RouterView></RouterView>
     </div>
@@ -194,10 +194,13 @@
 .filter-title {
     text-align: center;
 }
-.filter-options {
+.picture-container {
     display: flex;
-    flex-direction: row;
 }
+.picture-div {
+    text-align: center;
+}
+
 .filter-places-container {
     text-align: center;
 }
@@ -210,21 +213,34 @@
 .order-item-values {
     display: flex;
     align-items: center;
-    height: 6vh;
-    margin-left: 15px;
+    padding-left: 15px;
+    height: 5vh;
+}
+.order-item-values:hover {
+    background-color: #eeeee4;
 }
 .order-active {
     height: 100%;
     width: 100%;
-    background-color: #eeeee4;
+    background-color: #e6e6db;
 }
 .order-inactive {
     height: 100%;
     width: 100%;
     background-color: white;
 }
+.filter-item-active:hover 
+{
+    border-radius: 10px;
+    background-color: #eeeee4
+}
+.filter-item-inactive:hover
+{
+    border-radius: 10px;
+    background-color: #eeeee4
+}
 .filter-item-active {
-    background-color: #eeeee4;
+    background-color: #e6e6db;
     border-radius: 10px;
     padding: 5px;
 }

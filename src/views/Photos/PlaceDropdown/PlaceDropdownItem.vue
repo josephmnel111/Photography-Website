@@ -12,8 +12,5 @@
     };
   </script>
 <style>
-.order-item {
-  background-color: white;
-}
 </style>
   
