@@ -50,14 +50,14 @@ export default defineComponent({
 <template>
     <div class="individual-photo-section">
         <div class = "content">
-            <div class = "left-arrow" @click="clickLeftArrow(this.$route.params.id)">
-                {{ '<' }}
+            <div @click="clickLeftArrow(this.$route.params.id)">
+                <font-awesome-icon class="left-arrow" icon="chevron-left"></font-awesome-icon>
             </div>
             <div class = "picture-container">
                 <img class = "individual-picture" :src = "photoStore.photos[this.$route.params.id - 1].image"/>
             </div>
             <div class = "right-arrow" @click="clickRightArrow(this.$route.params.id)">
-                {{ '>' }}
+                <font-awesome-icon icon="chevron-right"></font-awesome-icon>
             </div>
         </div>
     </div>
@@ -72,16 +72,18 @@ export default defineComponent({
 }
 .left-arrow {
     position: absolute;
+    font-size: 24px;
     left: 0;
-    margin-left: 20px;
+    margin-left: 20vw;
 }
 .picture-container {
     position: relative;
 }
 .right-arrow {
     position: absolute;
+    font-size: 24px;
     right: 0;
-    margin-right: 20px;
+    margin-right: 20vw;
 }
 .content {
     display: flex;
